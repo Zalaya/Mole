@@ -1,21 +1,18 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
-IFS=$'\n\t'
 
 usage() {
-  cat <<EOF
-Usage: $(basename "$0") [-o output_file] [root]
-  -o FILE    Write output to FILE (default: output.txt)
-  root       Directory to scan (default: current directory)
-EOF
+  echo "Usage: $(basename "$0") [-o output_file] [root]"
+  echo "  -o FILE    Output file (default: output.txt)"
+  echo "  root       Directory to scan (default: current directory)"
   exit 1
 }
 
 OUTPUT_FILE=output.txt
 PROJECT_ROOT=.
 
-while getopts ":o:" opt; do
+while getopts "o:" opt; do
   case $opt in
     o) OUTPUT_FILE=$OPTARG ;;
     *) usage ;;
@@ -23,23 +20,23 @@ while getopts ":o:" opt; do
 done
 shift $((OPTIND-1))
 
-[[ $# -gt 1 ]] && usage
-[[ $# -eq 1 ]] && PROJECT_ROOT=$1
+if [ $# -gt 1 ]; then usage; fi
+if [ $# -eq 1 ]; then PROJECT_ROOT=$1; fi
 
-: > "$OUTPUT_FILE"
-FIRST=true
+> "$OUTPUT_FILE"
 
-find "$PROJECT_ROOT" -type f ! -path "$PROJECT_ROOT/$OUTPUT_FILE" -print | sort | while read -r RAW; do
-  SRC=${RAW//\\//}
+mapfile -t files < <(find "$PROJECT_ROOT" -type f ! -path "$PROJECT_ROOT/$OUTPUT_FILE" | sort)
 
-  if $FIRST; then
-    FIRST=false
-  else
-    printf '\n\n' >> "$OUTPUT_FILE"
-  fi
+for FILE_PATH in "${files[@]}"; do
+  FILE_PATH=${FILE_PATH//\\//}
+  RELATIVE_PATH=${FILE_PATH#"$PROJECT_ROOT"/}
 
-  printf 'File: %s\n\n' "${SRC#"$PROJECT_ROOT"/}" >> "$OUTPUT_FILE"
-  cat "$SRC" >> "$OUTPUT_FILE"
+  {
+    echo "File: $RELATIVE_PATH"
+    echo ""
+    cat "$FILE_PATH"
+    echo ""
+  } >> "$OUTPUT_FILE"
 done
 
-printf '✅ Generated file: %s\n' "$OUTPUT_FILE"
+echo "✅ Generated file: $OUTPUT_FILE"
