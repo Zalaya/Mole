@@ -2,25 +2,18 @@
 
 set -euo pipefail
 
-usage() {
-  echo "Usage: $(basename "$0") [-o output_file] [root]"
-  echo "  -o FILE    Output file (default: output.txt)"
-  echo "  root       Directory to scan (default: current directory)"
-  exit 1
-}
-
 OUTPUT_FILE=output.txt
 PROJECT_ROOT=.
 
 while getopts "o:" opt; do
   case $opt in
     o) OUTPUT_FILE=$OPTARG ;;
-    *) usage ;;
+    *) exit 1 ;;
   esac
 done
-shift $((OPTIND-1))
+shift $((OPTIND - 1))
 
-if [ $# -gt 1 ]; then usage; fi
+if [ $# -gt 1 ]; then exit 1; fi
 if [ $# -eq 1 ]; then PROJECT_ROOT=$1; fi
 
 > "$OUTPUT_FILE"
@@ -39,4 +32,4 @@ for FILE_PATH in "${files[@]}"; do
   } >> "$OUTPUT_FILE"
 done
 
-echo "✅ Generated file: $OUTPUT_FILE"
+echo "Generated file: $OUTPUT_FILE"
