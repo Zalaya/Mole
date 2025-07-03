@@ -76,7 +76,8 @@ chmod +x script.sh
 Mole also includes a **PowerShell version** for native Windows users.
 It supports the **same options and behavior** as the Bash version: `-o`, `-b`, and `[root_directory]`.
 
-⚠️ **Remote execution with parameters is not fully supported in PowerShell. Use the script locally.**
+> [!WARNING]
+> ⚠️ Remote execution with parameters is not fully supported in PowerShell. Use the script locally.
 
 ---
 
@@ -88,8 +89,8 @@ cd Mole
 .\script.ps1 -o output.txt -b blacklist.txt .\root_directory
 ```
 
-> [!TIP]
-> All options behave the same as in the Bash version.
+> [!NOTE]
+> 📚 All options behave the same as in the Bash version.
 
 ---
 
