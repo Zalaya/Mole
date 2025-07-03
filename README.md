@@ -73,10 +73,12 @@ chmod +x script.sh
 Just like `.gitignore`:
 
 ```txt
-# Ignore folders
+# Ignore directories
 .git/
 node_modules/
 dist/
+
+# Ignore files
 .env
 ```
 
