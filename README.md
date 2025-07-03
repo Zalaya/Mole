@@ -26,15 +26,13 @@ It’s perfect for sharing code with **ChatGPT** or other AI tools, without need
 
 ## 🌀 Remote usage
 
-### ✅ Bash (Linux/macOS/WSL)
-
 You can run **Mole** directly from GitHub with:
 
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/Zalaya/Mole/main/script.sh) [options] [root_directory]
 ```
 
-> \[!TIP]
+> [!TIP]
 > **Use Mole as a global command**
 > Add this alias to your shell config (`~/.bashrc`, `~/.zshrc`) to call Mole from anywhere:
 >
@@ -49,31 +47,6 @@ bash <(curl -s https://raw.githubusercontent.com/Zalaya/Mole/main/script.sh) [op
 > ```
 
 ---
-
-### 🪟 PowerShell (Windows)
-
-You can run Mole remotely in PowerShell using:
-
-```powershell
-irm https://raw.githubusercontent.com/Zalaya/Mole/main/script.ps1 | iex
-```
-
-> \[!TIP]
-> **Use Mole as a global command**
-> Add this line to your PowerShell profile (`$PROFILE`) to use Mole like a command:
->
-> ```powershell
-> function mole { irm https://raw.githubusercontent.com/Zalaya/Mole/main/script.ps1 | iex }
-> ```
->
-> Then simply run:
->
-> ```powershell
-> mole -o output.txt -b blacklist.txt .\root_directory
-> ```
-
----
-
 
 ## 🖥️ Local usage
 
@@ -95,6 +68,28 @@ chmod +x script.sh
 | `-o`           | Output file name (default: `output.txt`)            |
 | `-b`           | Path to blacklist file (excludes files/directories) |
 | root_directory | Root directory (default: current directory `"."`)   |
+
+---
+
+## 🪟 PowerShell support (Windows)
+
+Mole also includes a **PowerShell version** for native Windows users.
+It supports the **same options and behavior** as the Bash version: `-o`, `-b`, and `[root_directory]`.
+
+⚠️ **Remote execution with parameters is not fully supported in PowerShell. Use the script locally.**
+
+---
+
+### ▶️ Local usage in PowerShell
+
+```powershell
+git clone https://github.com/Zalaya/Mole.git
+cd Mole
+.\script.ps1 -o output.txt -b blacklist.txt .\root_directory
+```
+
+> [!TIP]
+> All options behave the same as in the Bash version.
 
 ---
 
@@ -120,13 +115,22 @@ dist/
 
 ## ✅ Requirements
 
+### 🐍 Bash
+
 * Bash (v4+).
 * Tools: `find`, `sed`, `cat`.
-
+  
 Compatible with Linux, macOS, WSL, Git Bash on Windows.
+
+### 🛡️ Powershell
+
+* PowerShell 5.1+ (included in Windows 10/11)
+
+Works with Windows Terminal, VSCode, or PowerShell ISE.
 
 ---
 
 ## 📘 License
 
 [MIT License](https://github.com/Zalaya/Mole/blob/main/LICENSE) — © [Zalaya](https://github.com/Zalaya)
+
