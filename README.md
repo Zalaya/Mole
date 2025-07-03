@@ -11,7 +11,7 @@ It’s perfect for sharing code with **ChatGPT** or other AI tools, without need
 
 - 🧠 AI-friendly: share full codebase context in one go.
 - ⚡ Fast: ideal for debugging, refactoring, or support.
-- 📦 Git-free: works on any folder, no repo required.
+- 📦 Git-free: works on any directory, no repo required.
 - 🌍 Remote-ready: run with a single command from anywhere.
 
 ---
@@ -19,7 +19,7 @@ It’s perfect for sharing code with **ChatGPT** or other AI tools, without need
 ## ⚙️ What it does
 
 - Recursively scans a directory.
-- Excludes files/folders via blacklist (like `.gitignore`).
+- Excludes files/directories via blacklist (like `.gitignore`).
 - Outputs all file contents in a single structured file.
 
 ---
@@ -60,11 +60,11 @@ chmod +x script.sh
 ./script.sh [-o output_file] [-b blacklist_file] [root_directory]
 ```
 
-| Option         | Description                                     |
-|----------------| ----------------------------------------------- |
-| `-o`           | Output file name (default: `output.txt`)        |
-| `-b`           | Path to blacklist file (excludes files/folders) |
-| root_directory | Root directory (default: current folder `"."`)  |
+| Option         | Description                                         |
+|----------------|-----------------------------------------------------|
+| `-o`           | Output file name (default: `output.txt`)            |
+| `-b`           | Path to blacklist file (excludes files/directories) |
+| root_directory | Root directory (default: current directory `"."`)   |
 
 ---
 
@@ -83,7 +83,7 @@ dist/
 ```
 
 * One relative path per line.
-* Supports folders or files.
+* Supports directories or files.
 * Comments with `#`.
 
 ---
