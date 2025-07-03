@@ -2,11 +2,11 @@ param (
   [string]$o = "output.txt",
   [string]$b = "",
   [Parameter(ValueFromRemainingArguments = $true)]
-  [string[]]$Args
+  [string[]]$RemainingArgs
 )
 
-$RootDirectory = if ($Args.Length -ge 1) {
-  Resolve-Path -LiteralPath $Args[0] | Select-Object -ExpandProperty Path
+$RootDirectory = if ($RemainingArgs.Length -ge 1) {
+  Resolve-Path -LiteralPath $RemainingArgs[0] | Select-Object -ExpandProperty Path
 } else {
   Get-Location | Select-Object -ExpandProperty Path
 }

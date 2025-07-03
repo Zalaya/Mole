@@ -26,23 +26,53 @@ It’s perfect for sharing code with **ChatGPT** or other AI tools, without need
 
 ## 🌀 Remote usage
 
+### ✅ Bash (Linux/macOS/WSL)
+
+You can run **Mole** directly from GitHub with:
+
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/Zalaya/Mole/main/script.sh) [options] [root_directory]
 ```
 
-> [!TIP]
-> **Use Mole as a global command**  
-> Add this alias to your terminal config (e.g. `~/.bashrc`, `~/.zshrc`) to use Mole from anywhere:
+> \[!TIP]
+> **Use Mole as a global command**
+> Add this alias to your shell config (`~/.bashrc`, `~/.zshrc`) to call Mole from anywhere:
 >
 > ```bash
 > alias mole='bash <(curl -s https://raw.githubusercontent.com/Zalaya/Mole/main/script.sh)'
 > ```
 >
-> Then you can run it like:
+> Then simply run:
 >
 > ```bash
-> mole -o output.txt -b blacklist.txt ./project
+> mole -o output.txt -b blacklist.txt ./root_directory
 > ```
+
+---
+
+### 🪟 PowerShell (Windows)
+
+You can run Mole remotely in PowerShell using:
+
+```powershell
+irm https://raw.githubusercontent.com/Zalaya/Mole/main/script.ps1 | iex
+```
+
+> \[!TIP]
+> **Use Mole as a global command**
+> Add this line to your PowerShell profile (`$PROFILE`) to use Mole like a command:
+>
+> ```powershell
+> function mole { irm https://raw.githubusercontent.com/Zalaya/Mole/main/script.ps1 | iex }
+> ```
+>
+> Then simply run:
+>
+> ```powershell
+> mole -o output.txt -b blacklist.txt .\root_directory
+> ```
+
+---
 
 
 ## 🖥️ Local usage
@@ -100,4 +130,3 @@ Compatible with Linux, macOS, WSL, Git Bash on Windows.
 ## 📘 License
 
 [MIT License](https://github.com/Zalaya/Mole/blob/main/LICENSE) — © [Zalaya](https://github.com/Zalaya)
-
