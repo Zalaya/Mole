@@ -71,29 +71,6 @@ chmod +x script.sh
 
 ---
 
-## 🪟 PowerShell support (Windows)
-
-Mole also includes a **PowerShell version** for native Windows users.
-It supports the **same options and behavior** as the Bash version: `-o`, `-b`, and `[root_directory]`.
-
-> [!WARNING]
-> ⚠️ Remote execution with parameters is not fully supported in PowerShell. Use the script locally.
-
----
-
-### ▶️ Local usage in PowerShell
-
-```powershell
-git clone https://github.com/Zalaya/Mole.git
-cd Mole
-.\script.ps1 -o output.txt -b blacklist.txt .\root_directory
-```
-
-> [!NOTE]
-> 📚 All options behave the same as in the Bash version.
-
----
-
 ## 🧾 Blacklist format
 
 Just like `.gitignore`:
@@ -122,12 +99,6 @@ dist/
 * Tools: `find`, `sed`, `cat`.
   
 Compatible with Linux, macOS, WSL, Git Bash on Windows.
-
-### 🛡️ Powershell
-
-* PowerShell 5.1+ (included in Windows 10/11)
-
-Works with Windows Terminal, VSCode, or PowerShell ISE.
 
 ---
 
